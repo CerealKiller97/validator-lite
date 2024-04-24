@@ -114,6 +114,15 @@ test.group('schema | string.optional', () => {
     assert.equal(schema.string({ format: 'email' })('FROM_EMAIL', 'foo@bar.com'), 'foo@bar.com')
   })
 
+  test('validate value as an uuid', ({ assert }) => {
+    const fn = () => schema.string({ format: 'uuid' })('FROM_EMAIL', 'foo')
+    assert.throws(fn, 'Value for environment variable "FROM_EMAIL" must be a valid UUID')
+    assert.equal(
+      schema.string({ format: 'uuid' })('WEBSITE_ID', 'd569254d-6baa-4655-8784-186fa3b8b8f2'),
+      'd569254d-6baa-4655-8784-186fa3b8b8f2'
+    )
+  })
+
   test('validate value as host', ({ assert }) => {
     const fn = () => schema.string({ format: 'host' })('HOST', 'foo:bar')
     assert.throws(fn, 'Value for environment variable "HOST" must be a valid (domain or ip)')

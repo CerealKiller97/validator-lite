@@ -49,6 +49,14 @@ const formats: {
       )
     }
   },
+  uuid: (key: string, value: string, options: StringFnOptions) => {
+    if (!require('validator/lib/isUUID')(value)) {
+      throw new Error(
+        options.message ||
+          `Value for environment variable "${key}" must be a valid UUID, instead received "${value}"`
+      )
+    }
+  },
 }
 
 /**
