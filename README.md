@@ -1,5 +1,5 @@
-
 # Validator Lite
+
 > Typed schema based validation with low calories
 
 [![github-actions-image]][github-actions-url] [![npm-image]][npm-url] [![license-image]][license-url] [![typescript-image]][typescript-url]
@@ -12,18 +12,21 @@ Really simple and lightweight validation library for JavaScript. Used by [**@ado
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installation
+
 Install the module from npm registry as follows:
+
 ```
 npm install @poppinss/validator-lite
 
 # yarn
 yarn add @poppinss/validator-lite
 
-# pnpm 
+# pnpm
 pnpm add @poppinss/validator-lite
 ```
 
 ## Basic usage
+
 The following example shows how to use the validator :
 
 ```ts
@@ -57,9 +60,11 @@ for (let [key, fn] of Object.entries(userSchema)) {
 ```
 
 ## API
+
 Following is the list of available methods :
 
 ### schema.string
+
 Validates the value to check if it exists and if it is a valid string. Empty strings fail the validations, and you must use the optional variant to allow empty strings.
 
 ```ts
@@ -81,6 +86,8 @@ schema.string({ format: 'host' })
 schema.string({ format: 'url' })
 // Must be a valid email address
 schema.string({ format: 'email' })
+// Must be a valid UUID
+schema.string({ format: 'uuid' })
 ```
 
 When validating the `url` format, you can also define additional options to force/ignore the `tld` and `protocol`.
@@ -143,6 +150,7 @@ Forces the value to be one of the pre-defined values.
 ---
 
 ### Custom functions
+
 For every other validation use case, you can define your custom functions.
 
 ```ts
@@ -151,9 +159,9 @@ For every other validation use case, you can define your custom functions.
     if (!value) {
       throw new Error('Value for PORT is required')
     }
-    
+
     if (isNaN(Number(value))) {
-      throw new Error('Value for PORT must be a valid number')    
+      throw new Error('Value for PORT must be a valid number')
     }
     return Number(value)
   }
@@ -164,13 +172,10 @@ For every other validation use case, you can define your custom functions.
 - The return value can be different from the initial input value.
 
 [github-actions-image]: https://img.shields.io/github/actions/workflow/status/poppinss/validator-lite/test.yml?style=for-the-badge
-[github-actions-url]: https://github.com/poppinss/validator-lite/actions "github-actions"
-
+[github-actions-url]: https://github.com/poppinss/validator-lite/actions 'github-actions'
 [npm-image]: https://img.shields.io/npm/v/@poppinss/validator-lite.svg?style=for-the-badge&logo=npm
-[npm-url]: https://www.npmjs.com/package/@poppinss/validator-lite "npm"
-
+[npm-url]: https://www.npmjs.com/package/@poppinss/validator-lite 'npm'
 [license-image]: https://img.shields.io/npm/l/validator-lite?color=blueviolet&style=for-the-badge
-[license-url]: LICENSE.md "license"
-
+[license-url]: LICENSE.md 'license'
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
-[typescript-url]:  "typescript"
+[typescript-url]: "typescript"
